@@ -2,6 +2,7 @@
 
 Exempel med express och mongodb.
 
+De slides som visade under tillfället (250916) finns i ```slides```-mappen.
 
 ## .env
 
