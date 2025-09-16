@@ -9,12 +9,12 @@ Exempel på .env
 
 ```bash
 # atlas
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mgd2ede.mongodb.net/courses?retryWrites=true&w=majority&appName=Cluster0
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster_name>.mgd2ede.mongodb.net/<collection_name>?retryWrites=true&w=majority&appName=<Cluster_name>
 DATABASE_NAME=courses
 COLLECTION_NAME=courses_data
 
 # docker
-# MONGODB_URI=mongodb://<username>:<password>@localhost:27017/courses?authSource=admin
+# MONGODB_URI=mongodb://<username>:<password>@localhost:<port>/<database_name>?authSource=admin
 # DATABASE_NAME=courses
 # COLLECTION_NAME=courses
 
