@@ -89,8 +89,10 @@ router.patch('/courses/:id', async (req, res) => {
     if (result.matchedCount === 0) {
       return res.status(404).json({ error: 'Course not found' });
     }
+
     res.json({ message: 'Course partially updated successfully' });
-  } catch (error) {
+  } 
+  catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
@@ -105,8 +107,10 @@ router.delete('/courses/:id', async (req, res) => {
     if (result.deletedCount === 0) {
       return res.status(404).json({ error: 'Course not found' });
     }
+
     res.json({ message: 'course deleted ' });
-  } catch (error) {
+  } 
+  catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
