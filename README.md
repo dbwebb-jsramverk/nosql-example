@@ -1,4 +1,4 @@
-# MongoDB CRUD API
+# mongodb exempel med express
 
 Exempel med express och mongodb.
 
