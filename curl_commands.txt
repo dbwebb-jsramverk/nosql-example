@@ -1,8 +1,5 @@
 # MongoDB API - CURL Test Commands
-
-# några id:n
-DV1680 Cybersäkerhet: 68c5b17de2268960795bd397
-68c424b0e38f42c92c66efb7
+# 'handy' att copy/paste in i terminalen
 
 # roten
 curl http://localhost:3000/
