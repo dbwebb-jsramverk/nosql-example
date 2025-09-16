@@ -11,34 +11,22 @@ curl http://localhost:3000/
 curl http://localhost:3000/api/courses
 
 #  ny kurs
-curl -X POST http://localhost:3000/api/courses \
-  -H "Content-Type: application/json" \
-  -d '{"code":"TEST001","name":"Test Kurs","points":7.5,"description":"En testkurs"}'
+curl -X POST http://localhost:3000/api/courses -H "Content-Type: application/json" -d '{"coursCode":"TEST001","courseName":"Test Kurs","points":7.5"}'
 
 # specifik kurs (t ex 68c424b0e38f42c92c66efb7)
 curl http://localhost:3000/api/courses/68c424b0e38f42c92c66efb7
 
 # PUT
 curl -X PUT http://localhost:3000/api/courses/COURSE_ID \
-  -H "Content-Type: application/json" \
-  -d '{"code":"TEST001","name":"Uppdaterad Test Kurs","points":7.5,"description":"Uppdaterad beskrivning"}'
+  -H "Content-Type: application/json" -d '{"courseCode":"TEST001","courseName":"Uppdaterad Test Kurs","points":7.5,"educationType":"Normal"}'
 
 # PATCH - vi ändrar antal students
-curl -X PATCH http://localhost:3000/api/courses/68c424b0e38f42c92c66efb7 \
-  -H "Content-Type: application/json" \
-  -d '{"students":110}'
+curl -X PATCH http://localhost:3000/api/courses/68c424b0e38f42c92c66efb7 -H "Content-Type: application/json" -d '{"students":110}'
 
 # DELETE
 curl -X DELETE http://localhost:3000/api/courses/COURSE_ID
 
-# Sök kurs med specifik kurskod ej implementerat
-# curl "http://localhost:3000/api/courses?code=TEST001"
-
 # Skapar några test-kurser
-curl -X POST http://localhost:3000/api/courses \
-  -H "Content-Type: application/json" \
-  -d '{"code":"WEB101","name":"Grundläggande Webbutveckling","credits":7.5}'
+curl -X POST http://localhost:3000/api/courses -H "Content-Type: application/json" -d '{"courseCode":"WEB101","courseName":"Grundläggande Webbutveckling","points":7.5}'
 
-curl -X POST http://localhost:3000/api/courses \
-  -H "Content-Type: application/json" \
-  -d '{"code":"DB201","name":"Databaser","points":15}'
+curl -X POST http://localhost:3000/api/courses -H "Content-Type: application/json" -d '{"courseCode":"DB201","coursName":"Databaser","points":15}'
