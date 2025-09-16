@@ -2,7 +2,15 @@
 
 Exempel med express och mongodb.
 
-De slides som visade under tillfället (250916) finns i ```slides```-mappen.
+## info
+
+De slides som visade under tillfället (250916) finns i ```slides```-mappen.  
+Under föreläsningen visades kort Compass som exempel på GUI. Det finns [här](https://www.mongodb.com/products/tools/compass).
+
+Filen ```courses.json``` innehåller datat som finns i mongodb-instanserna.
+
+I ```curl_commands.txt``` finns ett antal exempel för att använda api:et med curl.  
+Postman är också ett alternativ.
 
 ## .env
 
