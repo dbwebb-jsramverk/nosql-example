@@ -7,12 +7,13 @@ const router = express.Router();
 // collection name
 const COLL_NAME = process.env.COLLECTION_NAME;
 
-// GET all courses
+// GET
 router.get('/courses', async (req, res) => {
   try {
     const db = getDB();
     const courses = await db.collection(COLL_NAME).find({}).toArray();
-    console.log("fecthed courses");
+    console.log("GET ok");
+    
     res.json(courses);
   } 
   catch (error) {
@@ -20,7 +21,7 @@ router.get('/courses', async (req, res) => {
   }
 });
 
-// GET course by ID
+// GET :id
 router.get('/courses/:id', async (req, res) => {
   try {
     const db = getDB();
@@ -31,6 +32,8 @@ router.get('/courses/:id', async (req, res) => {
     if (!course) {
       return res.status(404).json({ error: 'oops, the course could not be found' });
     }
+    console.info(`GET /api/courses/:id -> ${req.params.id} ok`);
+    
     res.json(course);
   } 
   catch (error) {
@@ -38,7 +41,7 @@ router.get('/courses/:id', async (req, res) => {
   }
 });
 
-// POST new course
+// POST
 router.post('/courses', async (req, res) => {
   try {
     const db = getDB();
@@ -55,7 +58,7 @@ router.post('/courses', async (req, res) => {
   }
 });
 
-// PUT update course
+// PUT
 router.put('/courses/:id', async (req, res) => {
   try {
     const db = getDB();
@@ -69,14 +72,14 @@ router.put('/courses/:id', async (req, res) => {
       return res.status(404).json({ error: 'course not found:', _id });
     }
 
-    res.json({ message: 'course updated' });
+    res.json({ message: 'PUT ok' });
   } 
   catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// PATCH partial update course
+// PATCH
 router.patch('/courses/:id', async (req, res) => {
   try {
     const db = getDB();
@@ -87,17 +90,17 @@ router.patch('/courses/:id', async (req, res) => {
       );
     
     if (result.matchedCount === 0) {
-      return res.status(404).json({ error: 'Course not found' });
+      return res.status(404).json({ error: 'course not found' });
     }
 
-    res.json({ message: 'Course partially updated successfully' });
+    res.json({ message: 'PATCH ok' });
   } 
   catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
 
-// DELETE course
+// DELETE
 router.delete('/courses/:id', async (req, res) => {
   try {
     const db = getDB();
@@ -105,10 +108,10 @@ router.delete('/courses/:id', async (req, res) => {
       .deleteOne({ _id: new ObjectId(req.params.id) });
     
     if (result.deletedCount === 0) {
-      return res.status(404).json({ error: 'Course not found' });
+      return res.status(404).json({ error: 'course not found' });
     }
 
-    res.json({ message: 'course deleted ' });
+    res.json({ message: 'DELETE ok ' });
   } 
   catch (error) {
     res.status(500).json({ error: error.message });
