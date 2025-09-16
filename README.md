@@ -29,8 +29,7 @@ PORT=3000
 - `PUT /api/courses/:id`
 - `DELETE /api/courses/:id`
 
-
-## några curl exempel:
+## några curl exempel: 
 
 ```bash
 # visa alla courses
@@ -39,3 +38,26 @@ curl http://localhost:3000/api/courses
 # skapa course
 curl -X POST http://localhost:3000/api/courses -H "Content-Type: application/json" -d '{"courseCode":"TEST001","courseName":"Test Course","points":5}'
 ```
+
+## exempel på en docker-compose.yml:
+```yml
+services:
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        ports:
+            - '27017:27017' # this is the default port
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: <user_name>
+            MONGO_INITDB_ROOT_PASSWORD: <password>
+        volumes:
+            # path for perstiance
+            - /Users/mattische/Dev/docker/mongodb-kursredan/data:/data/db
+
+volumes:
+    mongodbdata:
+```
+
+```bash
+$ docker compose up -d
+```  
