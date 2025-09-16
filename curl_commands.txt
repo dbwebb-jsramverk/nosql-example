@@ -13,7 +13,7 @@ curl http://localhost:3000/api/courses
 #  ny kurs
 curl -X POST http://localhost:3000/api/courses \
   -H "Content-Type: application/json" \
-  -d '{"code":"TEST001","name":"Test Kurs","credits":5,"description":"En testkurs"}'
+  -d '{"code":"TEST001","name":"Test Kurs","points":7.5,"description":"En testkurs"}'
 
 # specifik kurs (t ex 68c424b0e38f42c92c66efb7)
 curl http://localhost:3000/api/courses/68c424b0e38f42c92c66efb7
@@ -21,7 +21,7 @@ curl http://localhost:3000/api/courses/68c424b0e38f42c92c66efb7
 # PUT
 curl -X PUT http://localhost:3000/api/courses/COURSE_ID \
   -H "Content-Type: application/json" \
-  -d '{"code":"TEST001","name":"Uppdaterad Test Kurs","credits":7.5,"description":"Uppdaterad beskrivning"}'
+  -d '{"code":"TEST001","name":"Uppdaterad Test Kurs","points":7.5,"description":"Uppdaterad beskrivning"}'
 
 # PATCH - vi ändrar antal students
 curl -X PATCH http://localhost:3000/api/courses/68c424b0e38f42c92c66efb7 \
@@ -41,4 +41,4 @@ curl -X POST http://localhost:3000/api/courses \
 
 curl -X POST http://localhost:3000/api/courses \
   -H "Content-Type: application/json" \
-  -d '{"code":"DB201","name":"Databaser","credits":15}'
+  -d '{"code":"DB201","name":"Databaser","points":15}'
