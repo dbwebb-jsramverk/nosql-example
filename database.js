@@ -10,9 +10,10 @@ const connectDB = async () => {
     const client = new MongoClient(process.env.MONGODB_URI);
     await client.connect();
     db = client.db(process.env.DATABASE_NAME);
-    console.log('MongoDB connected');
-  } catch (error) {
-    console.error('MongoDB connection failed:', error);
+    console.log('connected to db');
+  } 
+  catch (error) {
+    console.error('connection failedd:', error);
     process.exit(1);
   }
 };
