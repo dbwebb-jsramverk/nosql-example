@@ -23,21 +23,19 @@ PORT=3000
 
 ## routes/endpoints
 
-- `GET /api/courses` - Get all courses
-- `GET /api/courses/:id` - Get course by ID
-- `POST /api/courses` - Create new course
-- `PUT /api/courses/:id` - Update course
-- `DELETE /api/courses/:id` - Delete course
+- `GET /api/courses`
+- `GET /api/courses/:id`
+- `POST /api/courses`
+- `PUT /api/courses/:id`
+- `DELETE /api/courses/:id`
 
 
 ## några curl exempel:
 
 ```bash
-# Get all courses
+# visa alla courses
 curl http://localhost:3000/api/courses
 
-# Create course
-curl -X POST http://localhost:3000/api/courses \
-  -H "Content-Type: application/json" \
-  -d '{"code":"TEST001","name":"Test Course","credits":5}'
+# skapa course
+curl -X POST http://localhost:3000/api/courses -H "Content-Type: application/json" -d '{"courseCode":"TEST001","courseName":"Test Course","points":5}'
 ```
