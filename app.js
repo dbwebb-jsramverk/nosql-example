@@ -17,12 +17,14 @@ app.get('/', (req, res) => {
 
 // Start server
 const startServer = async () => {
-  await connectDB();
+  // await connectDB();
   const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
+  return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`process.env.MONGODB_URI:  ${process.env.MONGODB_URI} `);
   });
 };
 
-startServer();
+const server = await startServer();
+
+export default server;
