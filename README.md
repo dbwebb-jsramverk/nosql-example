@@ -61,7 +61,7 @@ services:
             MONGO_INITDB_ROOT_PASSWORD: <password>
         volumes:
             # path for perstiance
-            - /Users/mattische/Dev/docker/mongodb-kursredan/data:/data/db
+            - /you/local/path/here/:/data/db
 
 volumes:
     mongodbdata:
