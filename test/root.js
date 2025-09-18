@@ -6,8 +6,6 @@ import server from '../app.js';
 
 const { expect } = chai;
 
-chai.should();
-
 chai.use(chaiHttp);
 
 describe('root', () => {
@@ -16,7 +14,7 @@ describe('root', () => {
             request.execute(server)
                 .get("/")
                 .end((err, res) => {
-                    res.should.have.status(200);
+                    expect(res).to.have.status(200);
                     // res.body.should.be.an("object");
                     // res.body.should.have("message");
                     // res.body.message.should.be("Simple mongodb api");

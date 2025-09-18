@@ -1,6 +1,6 @@
 import express from 'express';
 import { ObjectId } from 'mongodb';
-import { getDB } from './database.js';
+import { connectDB } from './database.js';
 
 const router = express.Router();
 
@@ -10,12 +10,12 @@ const COLL_NAME = process.env.COLLECTION_NAME;
 // GET
 router.get('/courses', async (req, res) => {
   try {
-    const db = getDB();
+    const db = await connectDB();
     const courses = await db.collection(COLL_NAME).find({}).toArray();
     console.log("GET ok");
-    
+
     res.json(courses);
-  } 
+  }
   catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -24,18 +24,18 @@ router.get('/courses', async (req, res) => {
 // GET :id
 router.get('/courses/:id', async (req, res) => {
   try {
-    const db = getDB();
+    const db = await connectDB();
 
     const course = await db.collection(COLL_NAME)
       .findOne({ _id: new ObjectId(req.params.id) });
-    
+
     if (!course) {
       return res.status(404).json({ error: 'oops, the course could not be found' });
     }
     console.info(`GET /api/courses/:id -> ${req.params.id} ok`);
-    
+
     res.json(course);
-  } 
+  }
   catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -44,15 +44,15 @@ router.get('/courses/:id', async (req, res) => {
 // POST
 router.post('/courses', async (req, res) => {
   try {
-    const db = getDB();
+    const db = await connectDB();
     const result = await db.collection(COLL_NAME)
       .insertOne(req.body);
 
-    res.status(201).json({ 
+    res.status(201).json({
       _id: result.insertedId,
-      ...req.body 
+      ...req.body
     });
-  } 
+  }
   catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -61,19 +61,19 @@ router.post('/courses', async (req, res) => {
 // PUT
 router.put('/courses/:id', async (req, res) => {
   try {
-    const db = getDB();
+    const db = await connectDB();
     const result = await db.collection(COLL_NAME)
       .updateOne(
         { _id: new ObjectId(req.params.id) },
         { $set: req.body }
       );
-    
+
     if (result.matchedCount === 0) {
       return res.status(404).json({ error: 'course not found:', _id });
     }
 
     res.json({ message: 'PUT ok' });
-  } 
+  }
   catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -82,19 +82,19 @@ router.put('/courses/:id', async (req, res) => {
 // PATCH
 router.patch('/courses/:id', async (req, res) => {
   try {
-    const db = getDB();
+    const db = await connectDB();
     const result = await db.collection(COLL_NAME)
       .updateOne(
         { _id: new ObjectId(req.params.id) },
         { $set: req.body }
       );
-    
+
     if (result.matchedCount === 0) {
       return res.status(404).json({ error: 'course not found' });
     }
 
     res.json({ message: 'PATCH ok' });
-  } 
+  }
   catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -103,16 +103,16 @@ router.patch('/courses/:id', async (req, res) => {
 // DELETE
 router.delete('/courses/:id', async (req, res) => {
   try {
-    const db = getDB();
+    const db = await connectDB();
     const result = await db.collection(COLL_NAME)
       .deleteOne({ _id: new ObjectId(req.params.id) });
-    
+
     if (result.deletedCount === 0) {
       return res.status(404).json({ error: 'course not found' });
     }
 
     res.json({ message: 'DELETE ok ' });
-  } 
+  }
   catch (error) {
     res.status(500).json({ error: error.message });
   }

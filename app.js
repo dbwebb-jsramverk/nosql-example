@@ -1,5 +1,8 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 import express from 'express';
-import { connectDB } from './database.js';
 import routes from './routes.js';
 
 const app = express();
@@ -17,11 +20,11 @@ app.get('/', (req, res) => {
 
 // Start server
 const startServer = async () => {
-  // await connectDB();
   const PORT = process.env.PORT || 3000;
+
   return app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`process.env.MONGODB_URI:  ${process.env.MONGODB_URI} `);
+    // console.log(`process.env.MONGODB_URI:  ${process.env.MONGODB_URI} `);
   });
 };
 
