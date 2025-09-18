@@ -5,7 +5,7 @@ import { connectDB } from './database.js';
 const router = express.Router();
 
 // collection name
-const COLL_NAME = process.env.COLLECTION_NAME;
+const COLL_NAME = "courses";
 
 // GET
 router.get('/courses', async (req, res) => {

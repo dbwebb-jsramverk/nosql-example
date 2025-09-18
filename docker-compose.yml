@@ -3,7 +3,7 @@ services:
       image: mongo:latest
       container_name: mongodb
       ports:
-        - '27017:27018'
+        - '27017:27017'
       volumes:
         - /Users/efo/data/db:/data/db
       environment:

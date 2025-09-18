@@ -8,7 +8,6 @@ const connectDB = async () => {
     //   dbURI = process.env.MONGODB_TEST_URI;
     // }
 
-    console.log(dbURI)
     const client = new MongoClient(dbURI);
     await client.connect();
     return client.db(process.env.DATABASE_NAME);
